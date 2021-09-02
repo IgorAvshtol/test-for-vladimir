@@ -108,7 +108,7 @@ const AddUsersFab: FunctionComponent = () => {
         </Tooltip>
         {showForm && (
             <div className={classes.formSearch}>
-              <AddUserForm setShowForm={setShowForm}/>
+              <AddUserForm/>
             </div>
         )}
       </div>

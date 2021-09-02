@@ -1,10 +1,11 @@
 import React, { ChangeEvent, useState } from 'react';
 
+import { useDispatch } from 'react-redux';
+import { fetchUsersList, searchUser } from '@redux/actions';
+
 import { createStyles, fade, makeStyles, Theme, } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-import { fetchUsersList, searchUser } from '@redux/actions';
-import { useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>

@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 
 import { useDispatch } from 'react-redux';
 import { addUser } from '@redux/actions';
@@ -7,9 +7,6 @@ import { Field, Form, Formik } from 'formik';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 
-type AddUserType = {
-  setShowForm: Dispatch<SetStateAction<string>>;
-}
 
 const useAddUserStyles = makeStyles(
     (theme: Theme) => createStyles({
@@ -23,7 +20,7 @@ const useAddUserStyles = makeStyles(
     }),
 );
 
-export const AddUserForm = ({setShowForm}: AddUserType) => {
+export const AddUserForm = () => {
   const classes = useAddUserStyles();
 
   const dispatch = useDispatch();
@@ -42,7 +39,6 @@ export const AddUserForm = ({setShowForm}: AddUserType) => {
         onSubmit={(values, {setSubmitting}) => {
           addnNewUser(values.firstName, values.surName, values.age);
           setSubmitting(false);
-          setShowForm('');
         }}
     >
       {({isSubmitting}) => (
@@ -56,10 +52,7 @@ export const AddUserForm = ({setShowForm}: AddUserType) => {
             <div>
               <b>Age</b>: <Field type="age" name="age"/>
             </div>
-            <Button size="small" variant="outlined" type="submit" disabled={isSubmitting}
-                    onBlur={() => setShowForm('')}>
-              Add
-            </Button>
+            <Button size="small" variant="outlined" type="submit" disabled={isSubmitting}>Add</Button>
           </Form>
       )}
     </Formik>
