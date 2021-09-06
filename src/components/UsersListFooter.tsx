@@ -7,6 +7,7 @@ import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import AppBar from '@material-ui/core/AppBar';
 import AddIcon from '@material-ui/icons/Add';
+import CloseIcon from '@material-ui/icons/Close';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
 import { selectCheckedUsers } from '@redux/selectors';
@@ -26,23 +27,18 @@ const useUserListFooterStyles = makeStyles(
         top: 'auto',
         bottom: 0,
       },
-      fabButton: {
-        position: 'absolute',
-        zIndex: 1,
-        top: -20,
-        right: 40,
+      footerIcons: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingLeft: 5,
+        paddingRight: 5,
       },
-      formSearch: {
-        position: 'absolute',
-        zIndex: 1,
-        top: -120,
-        right: 1270,
+      fabButton: {
+        top: -20,
       },
       addButton: {
-        position: 'absolute',
-        zIndex: 1,
         top: -20,
-        right: 1460,
       },
       contentWrapper: {
         display: 'flex',
@@ -103,14 +99,10 @@ const AddUsersFab: FunctionComponent = () => {
               onClick={handleShowForm}
               className={classes.addButton}
           >
-            <AddIcon/>
+            {!showForm ? <AddIcon/> : <CloseIcon/>}
           </Fab>
         </Tooltip>
-        {showForm && (
-            <div className={classes.formSearch}>
-              <AddUserForm/>
-            </div>
-        )}
+        {showForm && <AddUserForm/>}
       </div>
   );
 };
@@ -149,8 +141,10 @@ const UsersListFooter: FunctionComponent = () => {
             color="default"
             className={classes.footer}
         >
-          <ScrollTopFab/>
-          <AddUsersFab/>
+          <div className={classes.footerIcons}>
+            <ScrollTopFab/>
+            <AddUsersFab/>
+          </div>
 
           <ContainerMedium>
             <div className={classes.contentWrapper}>

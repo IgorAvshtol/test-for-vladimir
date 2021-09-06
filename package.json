@@ -12,7 +12,7 @@
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "lint": "eslint src",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "husky": {
     "pre-commit": "yarn lint"

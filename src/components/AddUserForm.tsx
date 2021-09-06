@@ -14,8 +14,11 @@ const useAddUserStyles = makeStyles(
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-end',
-        padding: theme.spacing(0.5),
-        height: theme.spacing(8),
+        paddingRight: theme.spacing(2),
+        height: theme.spacing(2),
+      },
+      buttonStyle: {
+        height: 23,
       },
     }),
 );
@@ -52,7 +55,8 @@ export const AddUserForm = () => {
             <div>
               <b>Age</b>: <Field type="age" name="age"/>
             </div>
-            <Button size="small" variant="outlined" type="submit" disabled={isSubmitting}>Add</Button>
+            <Button className={classes.buttonStyle} size="small" variant="outlined" type="submit"
+                    disabled={isSubmitting}>Add</Button>
           </Form>
       )}
     </Formik>
